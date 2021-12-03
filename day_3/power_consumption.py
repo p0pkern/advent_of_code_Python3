@@ -47,6 +47,10 @@ def get_gamma(binary_list):
                 elif line[k] == "1":
                     gamma_dict[k][1] += 1
 
+    return gamma_dict
+
+def out_gamma(gamma_dict):
+
     out_gamma = ""
     for j in range(len(gamma_dict)):
         if gamma_dict[j][0] > gamma_dict[j][1]:
@@ -64,7 +68,6 @@ def get_epsilon(gamma):
      in order to get the epsilon binary number. Epsilon
      represents the least common bits in each row.
     """
-    
     out_epsilon = ""
     for i in range(len(gamma)):
         if gamma[i] == "0":
@@ -82,7 +85,8 @@ def power_consumption(file_name):
     """                
 
     lines = get_lines(file_name)
-    gamma = get_gamma(lines)
+    gamma_dict = get_gamma(lines)
+    gamma = out_gamma(gamma_dict)
     epsilon = get_epsilon(gamma)
     power_consumption = int(gamma, 2) * int(epsilon, 2)
 
