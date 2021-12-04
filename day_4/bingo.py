@@ -1,4 +1,3 @@
-from pprint import pprint
 
 def get_data(file_name):
     """
@@ -78,7 +77,10 @@ def check_score(boards, numbers):
                        return check_score(boards, numbers) 
 
 def calculate_score(winner, number):
-    pprint(winner) 
+    """
+     Calculates the score of the bingo game which is the sum of the 
+     remaining not tagged numbers multiplied by the last winning number.
+    """
     total = 0
 
     for row in range(len(winner)):
@@ -89,6 +91,9 @@ def calculate_score(winner, number):
     return total *  int(number)         
 
 def score(file_name):
+   """
+    Retrieves the score of the winning bingo game. 
+   """
    boards, numbers = get_data(file_name)
    number, winner = check_score(boards, numbers)
    calculation = calculate_score(winner, number)
