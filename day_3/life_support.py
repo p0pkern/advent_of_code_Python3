@@ -1,5 +1,4 @@
 from power_consumption import get_lines, get_gamma, get_epsilon
-from pprint import pprint
 
 def line_count(lines, index):
     zeros =  ones = 0
@@ -36,7 +35,7 @@ def oxygen_rating(lines):
 
 def filter_oxygen(line_list, index):
     """
-    
+     Helper function for oxygen_rating() 
     """
     zeros, ones = line_count(line_list, index)
     
@@ -78,6 +77,7 @@ def CO2_rating(lines):
 
 def filter_CO2(line_list, index):
    """
+    Helper function for CO2_rating()
    """
 
    zeros, ones = line_count(line_list, index)

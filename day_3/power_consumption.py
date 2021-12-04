@@ -1,10 +1,3 @@
-"""
-Name: Chris Peterman
-Title: Gamma, Epsilon Calculator
-Description: This is code for solving the day 3 equation for the Advent of Code 2021
-"""
-
-
 def get_lines(file_name):
     """
      Opens the file and saves the lines of the file in a list
