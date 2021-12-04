@@ -1,5 +1,4 @@
 from pprint import pprint
-from collections import defaultdict
 
 def get_data(file_name):
     """
@@ -67,15 +66,16 @@ def check_score(boards, numbers):
     """
     for number in numbers:
         for board_number, board in boards.items():
-            print("board")
-            pprint(board)
             for row in range(len(board)):
                 if number in boards[board_number][row]:
                     boards[board_number][row] = ['X' if x==number else x for x in boards[board_number][row]]
                 winner = check_winner(boards[board_number])
                 if winner:
-                   return number, boards[board_number] 
-    return number, boards
+                   if len(boards) == 1:
+                       return number, boards[board_number]
+                   else:
+                       del boards[board_number]
+                       return check_score(boards, numbers) 
 
 def calculate_score(winner, number):
     pprint(winner) 
