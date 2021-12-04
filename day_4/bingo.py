@@ -43,14 +43,17 @@ def check_winner(board):
           } 
 
     for row in range(len(board)):
+        row_x = 0
         for col in range(len(board)):
-            row_flag = 0
             if board[row][col] == 'X':
-               row_flag += 1
-               columns[col] += 1
-        if row_flag == 5:
-             return True
-    
+                if row_x == 5:
+                   return True
+                columns[col] += 1
+                row_x += 1
+
+        if row_x == 5:
+            return True
+
     for key, item in columns.items():
         if columns[key] >= 5:
             return True
@@ -64,12 +67,14 @@ def check_score(boards, numbers):
     """
     for number in numbers:
         for board_number, board in boards.items():
+            print("board")
+            pprint(board)
             for row in range(len(board)):
                 if number in boards[board_number][row]:
                     boards[board_number][row] = ['X' if x==number else x for x in boards[board_number][row]]
-            winner = check_winner(boards[board_number])
-            if winner:
-               return number, boards[board_number] 
+                winner = check_winner(boards[board_number])
+                if winner:
+                   return number, boards[board_number] 
     return number, boards
 
 def calculate_score(winner, number):
@@ -86,10 +91,8 @@ def calculate_score(winner, number):
 def score(file_name):
    boards, numbers = get_data(file_name)
    number, winner = check_score(boards, numbers)
-   pprint(winner)
    calculation = calculate_score(winner, number)
-   pprint(numbers) 
-   pprint(boards) 
+
    return number, calculation
 
 
